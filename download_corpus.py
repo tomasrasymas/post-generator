@@ -11,7 +11,9 @@ def download_corpus(url, file_path):
             print(link)
             buffer.append(description.strip() + os.linesep)
             for post_part in lib.parse_post(link):
-                buffer.append(post_part.strip() + os.linesep)
+                proc_post = post_part.strip()
+                if len(proc_post.split()) > 5:
+                    buffer.append(proc_post + os.linesep)
                 time.sleep(0.5)
 
         lib.write_list_to_file(file_path, buffer)
