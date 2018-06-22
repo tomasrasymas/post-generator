@@ -3,7 +3,7 @@ from argparse import ArgumentParser
 import lib
 
 
-def train(model_path, corpus_path, state_size=2):
+def train(model_path, corpus_path, state_size=3):
     corpus = lib.read_file(corpus_path)
     text_model = markovify.Text(corpus, state_size=state_size)
     model_json = text_model.to_json()
