@@ -1,0 +1,17 @@
+beautifulsoup4==4.6.0
+certifi==2018.4.16
+chardet==3.0.4
+cssselect==1.0.3
+fake-useragent==0.1.10
+idna==2.7
+lxml==4.2.1
+markovify==0.7.1
+parse==1.8.4
+pyquery==1.4.0
+requests==2.19.1
+requests-xml==0.2.3
+six==1.11.0
+Unidecode==1.0.22
+urllib3==1.23
+w3lib==1.19.0
+xmljson==0.1.9

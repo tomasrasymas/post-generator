@@ -3,27 +3,27 @@ from argparse import ArgumentParser
 import time
 import os
 
+URL = 'https://www.delfi.lt/rss'
 
-def download_corpus(url, file_path):
-    if url:
-        buffer = []
-        for link, description in lib.download_text(url):
-            print(link)
-            buffer.append(description.strip() + os.linesep)
-            for post_part in lib.parse_post(link):
+
+def download_corpus(file_path):
+    buffer = []
+    for link, description in lib.download_text(URL):
+        print(link, description)
+        print('*' * 30)
+        for sub_link, sub_description in lib.download_text(link):
+            buffer.append(sub_description.strip() + os.linesep)
+            for post_part in lib.parse_post(sub_link):
                 proc_post = post_part.strip()
                 if len(proc_post.split()) > 5:
                     buffer.append(proc_post + os.linesep)
                 time.sleep(0.5)
 
-        lib.write_list_to_file(file_path, buffer)
+    lib.write_list_to_file(file_path, buffer)
 
 
 if __name__ == '__main__':
     parser = ArgumentParser()
-    parser.add_argument('-u', '--url', dest='url', type=str, required=False,
-                        help='URL of delfi.lt rss item index to generate text file',
-                        default='https://www.delfi.lt/rss/feeds/lithuania.xml')
     parser.add_argument('-o', '--output', dest='output', type=str, required=False,
                         help='Path of text file to output downloaded rss index text', default='corpus.txt')
 
@@ -35,4 +35,4 @@ if __name__ == '__main__':
 
     print('*' * 50)
 
-    download_corpus(args.url, args.output)
+    download_corpus(args.output)
