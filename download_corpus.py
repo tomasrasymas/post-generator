@@ -12,6 +12,7 @@ def download_corpus(file_path):
         print(link, description)
         print('*' * 30)
         for sub_link, sub_description in lib.download_text(link):
+            print(sub_link)
             buffer.append(sub_description.strip() + os.linesep)
             for post_part in lib.parse_post(sub_link):
                 proc_post = post_part.strip()
