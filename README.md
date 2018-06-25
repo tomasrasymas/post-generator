@@ -1,9 +1,10 @@
 # post-generation is tool, which automatically generates text based on scrapped text.
 
-Software consists of two parts:
+Software consists of tree parts:
 * Corpus gathering
   * URL - https://www.delfi.lt/rss/
   * output file - corpus.txt
+* Model generation 
 * Post generation
 
 Text gathering is performed using beautifulsoup4.  
@@ -11,6 +12,8 @@ Post text generation is performed using Markov Chains (markovify).
 
 ### Corpus generation
 ```
+>>> python generate_text.py -h
+
 usage: download_corpus.py [-h] [-o OUTPUT]
 
 optional arguments:
@@ -20,9 +23,18 @@ optional arguments:
 
 ```
 
-Command example:
+### Model generation
 ```
-python download_corpus.py
+>>> python train_model.py -h
+
+usage: train_model.py [-h] [-m MODEL] [-c CORPUS]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -m MODEL, --model MODEL
+                        Generated model path
+  -c CORPUS, --corpus CORPUS
+                        Corpus file path
 ```
 
 ### Post generation
