@@ -1,4 +1,4 @@
-# post-generation is tool, which automatically generates text based on scrapped text.
+# post-generator is tool, which automatically generates text based on scrapped text.
 
 Software consists of three parts:
 * Corpus gathering
